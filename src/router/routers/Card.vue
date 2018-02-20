@@ -1,11 +1,11 @@
 <template lang="pug">
 
 #Card.card
-  button.card__button(@click="$emit('click')") Go back
+  button.card__button(@click="$router.go(-1)") Go back
   img.card__img(:src="imgUrl")
-  h2.card__title {{ data.title }} &#35;{{ data.id }}
-  h3.card__desc {{ data.description }}
-  p.card__desc {{ data.text }}
+  h2.card__title {{ tile.title }} &#35;{{ tile.id }}
+  h3.card__desc {{ tile.description }}
+  p.card__desc {{ tile.text }}
 
 </template>
 
@@ -14,11 +14,15 @@ import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'Card',
-  props: ['data'],
   data () {
     return {
-      imgUrl: 'http://placekitten.com/170/170'
+      imgUrl: 'https://loremflickr.com/' + 500 + '/' + 200
     }
+  },
+  computed: {
+    ...mapState('main', {
+      tile: state => state.pickedTile
+    })
   },
   methods: {}
 }

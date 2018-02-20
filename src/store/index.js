@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import createPersistedState from 'vuex-persistedstate'
+import createPersistedState from 'vuex-persistedstate'
 
 import main from './modules/main'
 
@@ -11,13 +11,13 @@ const store = new Vuex.Store({
     main
   },
   plugins: [
-    // createPersistedState({
-    //   storage: window.sessionStorage,
-    //   key: 'main'
-    // //   paths: [
-    // //     'main'
-    // //   ]
-    // })
+    createPersistedState({
+      storage: window.sessionStorage,
+      key: 'main'
+    //   paths: [
+    //     'main'
+    //   ]
+    })
   ]
 })
 

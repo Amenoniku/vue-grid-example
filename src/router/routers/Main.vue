@@ -1,35 +1,49 @@
 <template lang="pug">
 
-#app
-  //- header
-  header
-    a.active() Home
-    a() About
-    a() Whatever
-  router-view
+#main
+  .grid-cards(v-if="!openedCard")
+    MiniCard(
+      v-for="tile in tiles"
+      :key="tile.id"
+      :data="tile"
+      @click="openCard(tile)"
+    )
 
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
 
-import MiniCard from './components/Mini-card'
+import MiniCard from '../../components/Mini-card'
 
 export default {
-  name: 'App',
+  name: 'Main',
   components: {
     MiniCard
   },
   data() {
-    return {}
+    return {
+      openedCard: false
+    }
+  },
+  computed: {
+    ...mapState('main', {
+      tiles: state => state.tiles
+    })
   },
   methods: {
+    openCard (data) {
+      this.pickTile(data)
+      this.$router.push('card')
+    },
+    closeCard () {
+      this.$router.go(-1)
+    },
     ...mapActions('main', {
-      getTiles: 'getTiles'
+      pickTile: 'pickTile'
     })
   },
   mounted () {
-    this.getTiles()
   }
 }
 </script>
@@ -54,5 +68,12 @@ header
     &.active
       font-weight bold
       text-decoration none
+
+.grid-cards
+  margin 0 auto
+  display flex
+  flex-flow row wrap
+  justify-content center
+  align-content stretch
 
 </style>
