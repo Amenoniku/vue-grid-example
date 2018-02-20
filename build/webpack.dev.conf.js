@@ -1,4 +1,5 @@
 'use strict'
+const { createReadStream } = require('fs');
 const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
@@ -42,7 +43,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
       poll: config.dev.poll,
-    }
+    },
+    setup(app) {
+      app.get('/api/tiles', function(req, res)  {
+        res.writeHead(200, { 'Content-Type' : 'application/json' });
+        createReadStream(path.join(process.cwd(), './src/api/tiles.json'), { encoding: 'utf-8' }).pipe(res);
+    });
+  },
   },
   plugins: [
     new webpack.DefinePlugin({

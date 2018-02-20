@@ -36,6 +36,9 @@ export default {
 
 <style lang="stylus">
 
+*
+  box-sizing border-box
+
 #app
   font-family 'Avenir', Helvetica, Arial, sans-serif
   -webkit-font-smoothing antialiased

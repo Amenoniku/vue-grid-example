@@ -19,7 +19,18 @@ export default {
   },
   actions: {
     getTiles ({commit}) {
-      commit(GET_DATA, API.tiles)
+      let url = `/api/tiles`
+      let options = {
+        method: 'GET',
+        cache: 'default'
+      }
+      fetch(url, options).then((res) => {
+        return res.json()
+      }).then((data) => {
+        commit(GET_DATA, data.tiles)
+      }).catch((err) => {
+        throw err
+      })
     },
     pickTile ({commit}, tile) {
       commit(PICK_TILE, tile)

@@ -41,11 +41,11 @@ miniCardImgUrl = 'https://loremflickr.com/' + 500 + '/' + 200
 
 @media screen and (min-width: 1024px)
   .mini-card
-    width 32%
+    width (100 / 3)%
 
 @media screen and (max-width: 1024px)
   .mini-card
-    width 49%
+    width (100 / 2)%
 
 @media screen and (max-width: 479px)
   .mini-card
