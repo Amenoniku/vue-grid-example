@@ -1,4 +1,4 @@
-import API from '../../api/tiles.json'
+import 'whatwg-fetch'
 
 const GET_DATA = 'exam2_GET_DATA'
 const PICK_TILE = 'exam2_PICK_TILE'
