@@ -16,7 +16,7 @@ const router = new Router({
 
     // Routers
     { path: '/', name: 'Main', component: Main },
-    { path: '/card', name: 'Card', component: Card },
+    { path: '/card/:id', name: 'Card', component: Card },
   ]
 })
 

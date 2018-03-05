@@ -1,6 +1,6 @@
 <template lang="pug">
 
-#MiniCard.mini-card(@click="$emit('click')")
+router-link(:to="'/card/' + data.id")#MiniCard.mini-card
   h3.mini-card__title {{ data.title }} &#35;{{ data.id }}
   p.mini-card__desc {{ data.description }}
 

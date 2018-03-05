@@ -33,8 +33,9 @@ export default {
   },
   methods: {
     openCard (data) {
-      this.pickTile(data)
-      this.$router.push('card')
+      console.log(data.id)
+      // this.pickTile(data)
+      // this.$router.push('card')
     },
     closeCard () {
       this.$router.go(-1)
